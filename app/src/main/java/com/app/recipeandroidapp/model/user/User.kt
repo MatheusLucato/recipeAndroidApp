@@ -1,4 +1,4 @@
-package com.app.recipeandroidapp.model
+package com.app.recipeandroidapp.model.user
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

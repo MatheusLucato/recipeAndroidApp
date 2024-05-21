@@ -6,15 +6,19 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.viewModels
 import com.app.recipeandroidapp.R
-import com.app.recipeandroidapp.database.UserDatabase
+import com.app.recipeandroidapp.viewmodel.CadastroViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Cadastro : AppCompatActivity() {
     private lateinit var nomeEditText: EditText
     private lateinit var emailEditText: EditText
     private lateinit var senhaEditText: EditText
     private lateinit var cadastrarButton: Button
-    private lateinit var userDatabase: UserDatabase
+
+    private val viewModel: CadastroViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +33,6 @@ class Cadastro : AppCompatActivity() {
         emailEditText = findViewById(R.id.edit_email)
         senhaEditText = findViewById(R.id.edit_senha)
         cadastrarButton = findViewById(R.id.bt_cadastrar)
-        userDatabase = UserDatabase(this)
     }
 
     private fun setupListeners() {
@@ -43,18 +46,17 @@ class Cadastro : AppCompatActivity() {
         val email = emailEditText.text.toString().trim()
         val senha = senhaEditText.text.toString().trim()
 
-        if (nome.isNotEmpty() && email.isNotEmpty() && senha.isNotEmpty()) {
-            val success = userDatabase.insertUser(email, senha)
-            if (success) {
-                Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show()
-                val intent = Intent(this@Cadastro, Login::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                Toast.makeText(this, "Falha ao cadastrar. Tente novamente.", Toast.LENGTH_LONG).show()
+        viewModel.cadastrarUsuario(nome, email, senha) { userId ->
+            runOnUiThread {
+                if (userId != -1L) {
+                    Toast.makeText(this@Cadastro, "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this@Cadastro, Login::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(this@Cadastro, "Falha ao cadastrar. Tente novamente.", Toast.LENGTH_LONG).show()
+                }
             }
-        } else {
-            Toast.makeText(this, "Todos os campos devem ser preenchidos.", Toast.LENGTH_LONG).show()
         }
     }
 }

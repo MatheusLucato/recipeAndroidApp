@@ -1,4 +1,4 @@
-package com.app.recipeandroidapp.view
+package com.app.recipeandroidapp.controller
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.app.recipeandroidapp.R
 import com.app.recipeandroidapp.model.Meal
-import com.bumptech.glide.Glide
 
 class MealAdapter(private var meals: List<Meal>) : RecyclerView.Adapter<MealAdapter.MealViewHolder>() {
 

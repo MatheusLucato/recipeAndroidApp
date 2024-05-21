@@ -1,4 +1,4 @@
-package com.app.recipeandroidapp.model
+package com.app.recipeandroidapp.model.user
 
 import androidx.room.Dao
 import androidx.room.Insert

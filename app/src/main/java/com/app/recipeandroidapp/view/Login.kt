@@ -6,28 +6,40 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.app.recipeandroidapp.R
-import com.app.recipeandroidapp.database.UserDatabase
+import com.app.recipeandroidapp.controller.MealsActivity
+import com.app.recipeandroidapp.model.user.UserRepository
+import com.app.recipeandroidapp.viewmodel.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+import kotlinx.coroutines.*
 
+@AndroidEntryPoint
 class Login : AppCompatActivity() {
-    // Declarar a variável fora do método para que seja acessível em toda a classe
+
     private lateinit var textTelaCadastro: TextView
     private lateinit var userEmail: EditText
     private lateinit var userPassword: EditText
     private lateinit var loginButton: Button
-    private lateinit var userDatabase: UserDatabase
+
+    private val viewModel: LoginViewModel by viewModels()
+
+    @Inject
+    lateinit var userRepository: UserRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login) // setContentView deve ser chamado primeiro
+        setContentView(R.layout.activity_login)
         iniciarComponente()
-        supportActionBar?.hide() // Melhor usar o operador safe call
+        supportActionBar?.hide()
 
         textTelaCadastro.setOnClickListener {
             val intent = Intent(this@Login, Cadastro::class.java)
             startActivity(intent)
         }
+
         loginButton.setOnClickListener {
             realizarLogin()
         }
@@ -38,36 +50,33 @@ class Login : AppCompatActivity() {
         val password = userPassword.text.toString()
 
         if (email.isNotEmpty() && password.isNotEmpty()) {
-            val user = userDatabase.findUserByEmail(email)
-            if (user != null && user.moveToFirst()) {
-                val passwordIndex = user.getColumnIndex("password")
-                if (passwordIndex != -1) {
-                    val storedPassword = user.getString(passwordIndex)
-                    if (storedPassword == password) {
-                        Toast.makeText(this, "Logado com sucesso", Toast.LENGTH_LONG).show()
-                        val intent = Intent(this@Login, MealsActivity::class.java)
-                        startActivity(intent)
-                        finish()
+            GlobalScope.launch(Dispatchers.IO) {
+                val user = userRepository.dao.findUserByUsername(email)
+
+                withContext(Dispatchers.Main) {
+                    if (user != null) {
+                        if (user.password == password) {
+                            Toast.makeText(this@Login, "Logado com sucesso", Toast.LENGTH_LONG).show()
+                            val intent = Intent(this@Login, MealsActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            Toast.makeText(this@Login, "Senha incorreta", Toast.LENGTH_LONG).show()
+                        }
                     } else {
-                        Toast.makeText(this, "Senha incorreta", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@Login, "Usuario nao encontrado", Toast.LENGTH_LONG).show()
                     }
-                } else {
-                    Toast.makeText(this, "Database error: 'password' column not found", Toast.LENGTH_LONG).show()
                 }
-            } else {
-                Toast.makeText(this, "Usuario nao encontrado", Toast.LENGTH_LONG).show()
             }
-            user?.close()
         } else {
-            Toast.makeText(this, "Email ou senhas nao podem estar vazias", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Email ou senha não podem estar vazios", Toast.LENGTH_LONG).show()
         }
     }
 
     private fun iniciarComponente() {
-        textTelaCadastro = findViewById(R.id.text_tela_cadastro) // Inicializar a variável
+        textTelaCadastro = findViewById(R.id.text_tela_cadastro)
         userEmail = findViewById(R.id.edit_email)
         userPassword = findViewById(R.id.edit_senha)
         loginButton = findViewById(R.id.bt_entrar)
-        userDatabase = UserDatabase(this)
     }
 }

@@ -1,4 +1,4 @@
-package com.app.recipeandroidapp.view
+package com.app.recipeandroidapp.controller
 
 import MealViewModel
 import android.os.Bundle
@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.recipeandroidapp.R
-import com.app.recipeandroidapp.controller.MealAdapter
 
 class MealsActivity : AppCompatActivity() {
     private val viewModel: MealViewModel by viewModels()
