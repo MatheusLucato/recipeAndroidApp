@@ -54,6 +54,8 @@ dependencies {
     implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.9.10")
     implementation ("androidx.appcompat:appcompat:1.7.0-rc01")
     implementation ("androidx.constraintlayout:constraintlayout:2.2.0-alpha13")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     testImplementation ("junit:junit:5.10.21")
     androidTestImplementation ("androidx.test.ext:junit:1.1.5")
     implementation ("androidx.recyclerview:recyclerview:1.3.2")
