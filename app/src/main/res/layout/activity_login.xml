@@ -54,8 +54,8 @@
             app:layout_constraintEnd_toEndOf="@id/containerComponents"
             app:layout_constraintStart_toStartOf="@id/containerComponents"
             app:layout_constraintTop_toBottomOf="@id/edit_email"
-            app:layout_marginBottom="30dp"
-            app:layout_marginTop="20dp" />
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="20dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_entrar"
@@ -74,7 +74,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bt_entrar"
-            app:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp" />
 
         <TextView
             android:id="@+id/text_tela_cadastro"
@@ -88,7 +88,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/progressbar"
-            app:layout_marginBottom="30dp"
-            app:layout_marginTop="20dp" />
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="20dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

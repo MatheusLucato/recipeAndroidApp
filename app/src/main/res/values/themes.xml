@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="Theme.RecipeAndroidApp" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Personalizações adicionais podem ser colocadas aqui -->
+    </style>
 
-    <style name="Theme.RecipeAndroidApp" parent="android:Theme.Material.Light.NoActionBar" />
-
-    <style name="Theme.RecipeAndroidApp.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
+    <style name="Theme.RecipeAndroidApp.AppWidgetContainerParent" parent="android:style/Theme.DeviceDefault">
         <!-- Radius of the outer bound of widgets to make the rounded corners -->
         <item name="appWidgetRadius">16dp</item>
-        <!--
-        Radius of the inner view's bound of widgets to make the rounded corners.
-        It needs to be 8dp or less than the value of appWidgetRadius
-        -->
+        <!-- Radius of the inner view's bound of widgets to make the rounded corners -->
         <item name="appWidgetInnerRadius">8dp</item>
     </style>
 

@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.app.recipeandroidapp.R
 
-class Signup : AppCompatActivity() {
+class SignIn : AppCompatActivity() {
     // Declarar a variável fora do método para que seja acessível em toda a classe
     private lateinit var textTelaCadastro: TextView
 
@@ -17,7 +17,7 @@ class Signup : AppCompatActivity() {
         supportActionBar?.hide() // Melhor usar o operador safe call
 
         textTelaCadastro.setOnClickListener {
-            val intent = Intent(this@Signup, cadastro::class.java)
+            val intent = Intent(this@SignIn, Cadastro::class.java)
             startActivity(intent)
         }
     }

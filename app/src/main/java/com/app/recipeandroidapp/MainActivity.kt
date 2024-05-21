@@ -1,5 +1,6 @@
 package com.app.recipeandroidapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -11,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.app.recipeandroidapp.components.Cadastro
 import com.app.recipeandroidapp.controller.RecipeController
 import com.app.recipeandroidapp.model.MealResponse
 import com.app.recipeandroidapp.ui.theme.RecipeAndroidAppTheme
@@ -29,52 +31,9 @@ import java.lang.Exception
 
 class MainActivity : ComponentActivity() {
 
-    private fun fetchData() {
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                // Faz a chamada para obter as categorias
-                val mealResponse = RecipeController.getAllCategories()
-
-                // Processa a resposta se for bem-sucedida
-                mealResponse?.meals?.forEach { meal ->
-                    Log.i("CHECK_RESPONSE", "Category: ${meal.strCategory}")
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        fetchData()
-        setContent {
-            RecipeAndroidAppTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
-            }
-        }
-    }
-}
+        startActivity(Intent(this, Cadastro::class.java))
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    RecipeAndroidAppTheme {
-        Greeting("Android")
     }
 }
