@@ -3,8 +3,13 @@ package com.app.recipeandroidapp.service
 import com.app.recipeandroidapp.model.MealResponse
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Query
+
 interface RecipeService {
-    @GET("list.php?c=list")
-    fun getAllCategories(): Call<MealResponse>
+    @GET("random.php")
+    fun getRandomMeals(): Call<MealResponse>
+
+    @GET("search.php")
+    fun searchMeals(@Query("s") query: String): Call<MealResponse>
 
 }

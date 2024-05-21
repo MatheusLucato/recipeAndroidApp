@@ -1,0 +1,60 @@
+package com.app.recipeandroidapp.view
+
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import com.app.recipeandroidapp.R
+import com.app.recipeandroidapp.database.UserDatabase
+
+class Cadastro : AppCompatActivity() {
+    private lateinit var nomeEditText: EditText
+    private lateinit var emailEditText: EditText
+    private lateinit var senhaEditText: EditText
+    private lateinit var cadastrarButton: Button
+    private lateinit var userDatabase: UserDatabase
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_cadastro)
+        supportActionBar?.hide()
+        iniciarComponentes()
+        setupListeners()
+    }
+
+    private fun iniciarComponentes() {
+        nomeEditText = findViewById(R.id.edit_nome)
+        emailEditText = findViewById(R.id.edit_email)
+        senhaEditText = findViewById(R.id.edit_senha)
+        cadastrarButton = findViewById(R.id.bt_cadastrar)
+        userDatabase = UserDatabase(this)
+    }
+
+    private fun setupListeners() {
+        cadastrarButton.setOnClickListener {
+            realizarCadastro()
+        }
+    }
+
+    private fun realizarCadastro() {
+        val nome = nomeEditText.text.toString().trim()
+        val email = emailEditText.text.toString().trim()
+        val senha = senhaEditText.text.toString().trim()
+
+        if (nome.isNotEmpty() && email.isNotEmpty() && senha.isNotEmpty()) {
+            val success = userDatabase.insertUser(email, senha)
+            if (success) {
+                Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show()
+                val intent = Intent(this@Cadastro, Login::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                Toast.makeText(this, "Falha ao cadastrar. Tente novamente.", Toast.LENGTH_LONG).show()
+            }
+        } else {
+            Toast.makeText(this, "Todos os campos devem ser preenchidos.", Toast.LENGTH_LONG).show()
+        }
+    }
+}

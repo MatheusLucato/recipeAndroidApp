@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".components.Cadastro">
+    tools:context=".view.Cadastro">
     <TextView
         android:id="@+id/title_cadastro"
         android:layout_width="wrap_content"
@@ -51,6 +51,7 @@
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
         tools:ignore="TextFields" />
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_cadastrar"
         style="@style/Button"
         android:layout_marginTop="30dp"
         android:gravity="center"

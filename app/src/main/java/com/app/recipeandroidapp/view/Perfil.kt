@@ -1,4 +1,4 @@
-package com.app.recipeandroidapp.components
+package com.app.recipeandroidapp.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
