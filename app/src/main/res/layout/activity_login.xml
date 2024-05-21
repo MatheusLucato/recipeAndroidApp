@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
+
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="60dp"
+            android:gravity="center"
+            android:text="@string/titulo_login"
+            android:textColor="@color/white"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/containerComponents"
+            style="@style/ContainerComponents"
+            android:layout_marginTop="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titulo" />
+
+        <EditText
+            android:id="@+id/edit_email"
+            style="@style/Edit_Text"
+            android:autofillHints=""
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="@id/containerComponents"
+            app:layout_constraintStart_toStartOf="@id/containerComponents"
+            app:layout_constraintTop_toTopOf="@id/containerComponents"
+            app:layout_constraintTop_toBottomOf="@id/containerComponents"/>
+
+        <EditText
+            android:id="@+id/edit_senha"
+            style="@style/Edit_Text"
+            android:drawableRight="@drawable/ic_eye"
+            android:hint="senha"
+            android:inputType="numberPassword"
+            app:layout_constraintEnd_toEndOf="@id/containerComponents"
+            app:layout_constraintStart_toStartOf="@id/containerComponents"
+            app:layout_constraintTop_toBottomOf="@id/edit_email"
+            app:layout_marginBottom="30dp"
+            app:layout_marginTop="20dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_entrar"
+            style="@style/Button"
+            android:gravity="center"
+            android:text="@string/entrar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_senha" />
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bt_entrar"
+            app:layout_marginTop="20dp" />
+
+        <TextView
+            android:id="@+id/text_tela_cadastro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/text_cadastro"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progressbar"
+            app:layout_marginBottom="30dp"
+            app:layout_marginTop="20dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
