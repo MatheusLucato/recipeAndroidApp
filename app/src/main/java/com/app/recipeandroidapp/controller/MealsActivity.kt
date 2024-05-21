@@ -1,17 +1,14 @@
-package com.app.recipeandroidapp.view
+package com.app.recipeandroidapp.controller
 
 import MealViewModel
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
-import android.widget.Button
 import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.recipeandroidapp.R
-import com.app.recipeandroidapp.model.Meal
-import com.app.recipeandroidapp.view.MealAdapter
 
 class MealsActivity : AppCompatActivity() {
     private val viewModel: MealViewModel by viewModels()
