@@ -1,7 +1,11 @@
 package com.app.recipeandroidapp.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "meals")
 data class Meal(
-    val idMeal: String,
+    @PrimaryKey val idMeal: String,
     val strMeal: String,
     val strDrinkAlternate: String?,
     val strCategory: String,
@@ -9,8 +13,7 @@ data class Meal(
     val strInstructions: String,
     val strMealThumb: String,
     val strTags: String?,
-    val strYoutube: String,
-    val ingredients: List<Pair<String, String?>>
+    val strYoutube: String
 )
 
 data class MealResponse(
