@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">recipeAndroidApp</string>
     <string name="entrar">Entrar</string>
-    <string name="text_cadastro">Realizar cadastro</string>
+    <string name="text_cadastro"><u>Realizar cadastro</u></string>
     <string name="titulo_login">Login</string>
     <string name="cadastro">Cadastro</string>
 
