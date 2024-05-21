@@ -46,17 +46,22 @@ class Cadastro : AppCompatActivity() {
         val email = emailEditText.text.toString().trim()
         val senha = senhaEditText.text.toString().trim()
 
-        viewModel.cadastrarUsuario(nome, email, senha) { userId ->
-            runOnUiThread {
-                if (userId != -1L) {
-                    Toast.makeText(this@Cadastro, "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show()
-                    val intent = Intent(this@Cadastro, Login::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    Toast.makeText(this@Cadastro, "Falha ao cadastrar. Tente novamente.", Toast.LENGTH_LONG).show()
+        if (nome.isNotEmpty() && email.isNotEmpty() && senha.isNotEmpty()) {
+            viewModel.cadastrarUsuario(nome, email, senha) { userId ->
+                runOnUiThread {
+                    if (userId != -1L) {
+                        Toast.makeText(this@Cadastro, "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show()
+                        val intent = Intent(this@Cadastro, Login::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(this@Cadastro, "Falha ao cadastrar. Tente novamente.", Toast.LENGTH_LONG).show()
+                    }
                 }
             }
+        }else {
+            Toast.makeText(this, "Todos os campos devem ser preenchidos.", Toast.LENGTH_LONG).show()
         }
+
     }
 }

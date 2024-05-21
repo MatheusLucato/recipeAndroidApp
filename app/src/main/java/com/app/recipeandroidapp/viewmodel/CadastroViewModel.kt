@@ -2,8 +2,8 @@ package com.app.recipeandroidapp.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.app.recipeandroidapp.model.user.User
-import com.app.recipeandroidapp.model.user.UserRepository
+import com.app.recipeandroidapp.model.User
+import com.app.recipeandroidapp.model.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

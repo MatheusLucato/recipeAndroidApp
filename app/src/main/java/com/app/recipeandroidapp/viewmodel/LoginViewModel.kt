@@ -1,7 +1,7 @@
 package com.app.recipeandroidapp.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.app.recipeandroidapp.model.user.UserRepository
+import com.app.recipeandroidapp.model.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

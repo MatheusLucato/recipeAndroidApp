@@ -53,6 +53,8 @@ android {
 }
 
 dependencies {
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     val hiltVersion = "2.50"
 
     implementation("com.google.dagger:hilt-android:$hiltVersion")

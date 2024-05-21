@@ -2,9 +2,9 @@ package com.app.recipeandroidapp
 
 import android.content.Context
 import androidx.room.Room
-import com.app.recipeandroidapp.model.user.UserDao
-import com.app.recipeandroidapp.model.user.UserDatabase
-import com.app.recipeandroidapp.model.user.UserRepository
+import com.app.recipeandroidapp.model.UserDao
+import com.app.recipeandroidapp.model.UserDatabase
+import com.app.recipeandroidapp.model.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

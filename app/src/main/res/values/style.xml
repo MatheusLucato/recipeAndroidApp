@@ -2,7 +2,7 @@
 <resources>
     <style name="ContainerComponents">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">220dp</item>
+        <item name="android:layout_height">wrap_content</item> <!-- Alterado de 220dp para wrap_content -->
         <item name="android:background">@drawable/containers</item>
         <item name="android:layout_margin">20dp</item>
     </style>
@@ -43,6 +43,5 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
     </style>
-
 
 </resources>

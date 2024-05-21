@@ -10,7 +10,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.app.recipeandroidapp.R
 import com.app.recipeandroidapp.controller.MealsActivity
-import com.app.recipeandroidapp.model.user.UserRepository
+import com.app.recipeandroidapp.model.UserRepository
 import com.app.recipeandroidapp.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

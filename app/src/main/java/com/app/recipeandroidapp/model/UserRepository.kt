@@ -1,4 +1,4 @@
-package com.app.recipeandroidapp.model.user
+package com.app.recipeandroidapp.model
 
 
 class UserRepository constructor(var dao: UserDao) {
