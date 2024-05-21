@@ -14,10 +14,10 @@ class CadastroViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) : ViewModel() {
 
-    fun cadastrarUsuario(nome: String, email: String, senha: String, onResult: (Long) -> Unit) {
-        if (nome.isNotEmpty() && email.isNotEmpty() && senha.isNotEmpty()) {
+    fun cadastrarUsuario(username: String, senha: String, onResult: (Long) -> Unit) {
+        if (username.isNotEmpty() && senha.isNotEmpty()) {
             viewModelScope.launch(Dispatchers.IO) {
-                val newUser = User(username = email, password = senha)
+                val newUser = User(username = username, password = senha)
                 val userId = userRepository.dao.insert(newUser)
                 onResult(userId)
             }

@@ -20,7 +20,7 @@ import kotlinx.coroutines.*
 class Login : AppCompatActivity() {
 
     private lateinit var textTelaCadastro: TextView
-    private lateinit var userEmail: EditText
+    private lateinit var userName: EditText
     private lateinit var userPassword: EditText
     private lateinit var loginButton: Button
 
@@ -46,12 +46,12 @@ class Login : AppCompatActivity() {
     }
 
     private fun realizarLogin() {
-        val email = userEmail.text.toString()
+        val username = userName.text.toString()
         val password = userPassword.text.toString()
 
-        if (email.isNotEmpty() && password.isNotEmpty()) {
+        if (username.isNotEmpty() && password.isNotEmpty()) {
             GlobalScope.launch(Dispatchers.IO) {
-                val user = userRepository.dao.findUserByUsername(email)
+                val user = userRepository.dao.findUserByUsername(username)
 
                 withContext(Dispatchers.Main) {
                     if (user != null) {
@@ -75,7 +75,7 @@ class Login : AppCompatActivity() {
 
     private fun iniciarComponente() {
         textTelaCadastro = findViewById(R.id.text_tela_cadastro)
-        userEmail = findViewById(R.id.edit_email)
+        userName = findViewById(R.id.edit_username)
         userPassword = findViewById(R.id.edit_senha)
         loginButton = findViewById(R.id.bt_entrar)
     }

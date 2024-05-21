@@ -13,8 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class Cadastro : AppCompatActivity() {
-    private lateinit var nomeEditText: EditText
-    private lateinit var emailEditText: EditText
+    private lateinit var usernameEditText: EditText
     private lateinit var senhaEditText: EditText
     private lateinit var cadastrarButton: Button
 
@@ -29,8 +28,7 @@ class Cadastro : AppCompatActivity() {
     }
 
     private fun iniciarComponentes() {
-        nomeEditText = findViewById(R.id.edit_nome)
-        emailEditText = findViewById(R.id.edit_email)
+        usernameEditText = findViewById(R.id.edit_username)
         senhaEditText = findViewById(R.id.edit_senha)
         cadastrarButton = findViewById(R.id.bt_cadastrar)
     }
@@ -42,12 +40,11 @@ class Cadastro : AppCompatActivity() {
     }
 
     private fun realizarCadastro() {
-        val nome = nomeEditText.text.toString().trim()
-        val email = emailEditText.text.toString().trim()
+        val usernameEditText = usernameEditText.text.toString().trim()
         val senha = senhaEditText.text.toString().trim()
 
-        if (nome.isNotEmpty() && email.isNotEmpty() && senha.isNotEmpty()) {
-            viewModel.cadastrarUsuario(nome, email, senha) { userId ->
+        if (usernameEditText.isNotEmpty() && senha.isNotEmpty()) {
+            viewModel.cadastrarUsuario(usernameEditText, senha) { userId ->
                 runOnUiThread {
                     if (userId != -1L) {
                         Toast.makeText(this@Cadastro, "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show()

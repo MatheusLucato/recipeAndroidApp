@@ -28,10 +28,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/edit_email"
+            android:id="@+id/edit_username"
             style="@style/Edit_Text"
             android:autofillHints=""
-            android:hint="Email"
+            android:hint="Username"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
             android:inputType="numberPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edit_email"
+            app:layout_constraintTop_toBottomOf="@id/edit_username"
             android:layout_marginTop="20dp" />
 
 
