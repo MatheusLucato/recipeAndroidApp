@@ -29,7 +29,7 @@
         </receiver>
 
         <activity
-            android:name=".components.perfil"
+            android:name=".components.Perfil"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
